@@ -3,11 +3,10 @@ library(lubridate)
 library(RcppRoll)
 library(zoo)
 library(sf)
-library(reticulate)
 
 
 
-py_run_file("read_RIP_daily_py.py")
+
 
 # 1. load new RIP data from Pádraig
 data_path <- file.path(getwd(),"")  # path to the data
