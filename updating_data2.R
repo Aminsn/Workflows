@@ -63,4 +63,4 @@ town_in_rk_count <- RIP_Towns %>%
 
 # merged_rk_data = RIP_rk_aggregated_data_merged_7Sept.RData
 merged_rk_data <- town_in_rk_count
-write.save(merged_rk_data,file = "RIP_rk_aggregated_data_merged_12Nov.csv")
+write.csv(merged_rk_data,file = "RIP_rk_aggregated_data_merged_12Nov.csv")
