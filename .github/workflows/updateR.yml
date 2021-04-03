@@ -6,7 +6,7 @@ name: updateData
 # events but only for the master branch
 on:
  schedule:
-        - cron:  '*/34 0,19 * * *'
+        - cron:  '37 19 * * *'
 
 
 
