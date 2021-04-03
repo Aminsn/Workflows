@@ -6,7 +6,7 @@ name: updateData
 # events but only for the master branch
 on:
  schedule:
-     - cron: "* * * * *"
+     - cron: "0 0 * * *"
   #push:
    # branches: [ main ]
   #pull_request:
