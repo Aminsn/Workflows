@@ -5,9 +5,6 @@ library(zoo)
 library(sf)
 
 
-
-
-
 # 1. load new RIP data from Pádraig
 data_path <- file.path(getwd(),"")  # path to the data
 files <- dir(pattern = "*.tsv") # get file names
