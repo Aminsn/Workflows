@@ -1,0 +1,53 @@
+# This workflow deploys the app on push or pull request
+
+name: updateData
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  
+  
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Update datasets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install libs
+        run: |
+          sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable
+          sudo apt-get update
+          sudo apt-get install libudunits2-dev libgdal-dev libgeos-dev libproj-dev libgit2-dev
+      - uses: r-lib/actions/setup-r@v1
+        with:
+          r-version: '4.0.3'
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+      - name: Install libgit2
+        run: |
+          sudo add-apt-repository ppa:cran/libgit2
+          sudo apt-get update
+          sudo apt-get install libgit2-dev
+      - name: Install packages
+        run: |
+          Rscript -e 'install.packages("sf")'
+          Rscript installing_packages.R
+          Rscript -e 'install.packages("https://cran.r-project.org/src/contrib/Archive/usethis/usethis_1.6.3.tar.gz", repos=NULL, type="source")'
+          Rscript -e 'install.packages("rsconnect")'
+      - name: Update the dataset and deploy
+        run: |
+          Rscript updating_data2.R 
+      - name: Commit results
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add . || echo "No changes to commit"
+          git commit -m 'updating data' || echo "No changes to commit"
+          git push origin || echo "No changes to commit"
