@@ -1,8 +1,9 @@
-library(tidyverse)
+library(tidyr)
 library(lubridate)
-library(RcppRoll)
 library(zoo)
 library(sf)
+library(purrr)
+library(readr)
 
 
 # 1. load new RIP data from Pádraig
