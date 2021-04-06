@@ -7,14 +7,13 @@ name: updateData
 #on:
  #schedule:
     # - cron: "0 0 * * *"
-on: [push]
+
   #push:
    # branches: [ main ]
   #pull_request:
    # branches: [ main ]
-  
-workflow_dispatch:
-
+on: [push]
+#workflow_dispatch:
 jobs:
   deploy:
     name: Update datasets
