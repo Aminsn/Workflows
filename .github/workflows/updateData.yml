@@ -4,9 +4,10 @@ name: updateData
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on:
+#on:
  #schedule:
     # - cron: "0 0 * * *"
+on:
   push:
     branches: [ main ]
   pull_request:
